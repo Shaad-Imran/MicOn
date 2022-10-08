@@ -297,6 +297,99 @@ header .container {
   display: none;
 }
 
+/* Podcast section ...... */
+.podcast {
+  padding: var(--section-padding) 0;
+}
+
+.podcast-list {
+  display: grid;
+  gap: 30px;
+}
+
+.podcast-card {
+  border-radius: 4px;
+}
+
+.card-banner {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  z-index: 1;
+}
+
+.card-banner img {
+  width: 100%;
+}
+
+.card-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.podcast-card:is(:hover, :focus) .card-banner::before {
+  background: hsla(0, 0%, 100%, 0.1);
+}
+
+.card-banner-icon {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  display: grid;
+  place-items: center;
+  color: var(--white);
+  border: 2px solid var(--white);
+  border-radius: 50%;
+  font-size: 20px;
+  transition: var(--transition);
+}
+
+.podcast-card:is(:hover, :focus) .card-banner-icon {
+  background: var(--white);
+  color: var(--blue-ryb);
+}
+
+.card-meta {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  color: var(--heliotrope-gray);
+  font-size: var(--fs-4);
+  margin-left: 35px;
+  margin-bottom: 15px;
+}
+
+.card-meta::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -35px;
+  transform: translateY(-2px);
+  width: 25px;
+  height: 2px;
+  background: var(--heliotrope-gray);
+}
+
+.podcast-card .card-title {
+  display: inline;
+  padding: 3px 0;
+  background: var(--gradient);
+  background-position: 0 95%;
+  background-repeat: no-repeat;
+  background-size: 0 2px;
+  transition: var(--transition);
+}
+
+.podcast-card:is(:hover, :focus) .card-title {
+  background-size: 100% 2px;
+}
+
 /* Responsive...  */
 @media (min-width: 550px) {
   .container {
@@ -337,6 +430,10 @@ header .container {
     justify-content: center;
     align-items: center;
     gap: 25px;
+  }
+
+  .podcast-list {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -426,6 +523,10 @@ header .container {
     max-width: 680px;
     margin-inline: auto;
   }
+
+  .podcast-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media (min-width: 1200px) {
@@ -491,5 +592,9 @@ header .container {
     background: url("images/hero-banner.png") no-repeat;
     background-size: cover;
     border-radius: 100px;
+  }
+
+  .podcast-list {
+    grid-template-columns: repeat(4, 1fr);
   }
 }

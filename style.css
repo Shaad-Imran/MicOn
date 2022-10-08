@@ -1,0 +1,292 @@
+:root {
+  --flourescent-blue: hsl(178, 100%, 49%);
+  --heliotrope-gray: hsl(253, 15%, 70%);
+  --russian-violet: hsl(252, 80%, 16%);
+  --dark-violet: hsl(252, 100%, 12%);
+  --space-cadet: hsl(247, 43%, 20%);
+  --blue-ryb: hsl(221, 100%, 50%);
+  --white: hsl(0, 0%, 100%);
+
+  --gradient: linear-gradient(
+    to right,
+    var(--flourescent-blue),
+    var(--blue-ryb)
+  );
+
+  --ff-josefin: "Josefin sans", sans-serif;
+
+  --fs-1: 25px;
+  --fs-2: 18px;
+  --fs-3: 17px;
+  --fs-4: 15px;
+
+  --fw-500: 500;
+  --fw-700: 700;
+
+  --transition: 0.25s ease-in-out;
+
+  --section-padding: 30px;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+a,
+img,
+span,
+input,
+button,
+ion-icon {
+  display: block;
+}
+
+button {
+  font: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+input {
+  font: inherit;
+  border: none;
+  width: 100%;
+}
+
+:focus {
+  outline-offset: 4px;
+}
+
+html {
+  font-family: var(--ff-josefin);
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--dark-violet);
+  color: var(--white);
+}
+
+/*.......#REUSED STYLE.......  */
+
+.btn {
+  color: var(--white);
+  font-size: var(--fs-4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding: 9px 10px;
+  border-radius: 4px;
+}
+
+.container {
+  border: 1px solid greenyellow;
+  padding: 0 15px;
+}
+
+.h3 {
+  color: var(--white);
+  font-size: var(--fs-2);
+  line-height: 1.5;
+}
+
+/* header........  */
+header {
+  border: 2px solid red;
+  position: fixed;
+  left: 0;
+  width: 100%;
+  padding-block: 15px;
+  box-shadow: 0 1px 3px hsla(0, 0%, 0%, 0.5);
+  background: var(--russian-violet);
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-toggle-btn {
+  color: var(--white);
+  font-size: 35px;
+  border-radius: 4px;
+}
+
+.nav-toggle-btn ion-icon {
+  --ionicon-stroke-width: 40px;
+}
+
+.navbar {
+  position: fixed;
+  bottom: -270px;
+  left: 0;
+  width: 100%;
+  background: var(--russian-violet);
+  border-radius: 8px 8px 0 0;
+  padding: 30px 10px 10px;
+  box-shadow: 0 -1px 10px hsla(0, 0%, 0%, 0.5);
+  /* z-index: 2; */
+  visibility: hidden;
+  transition: 0.15s ease-in;
+}
+
+.navbar.active {
+  bottom: 0;
+  visibility: visible;
+  transition: 0.25s ease-out;
+}
+
+.navbar-list {
+  padding-bottom: 5px;
+  border-bottom: 1px solid hsla(0, 0%, 100%, 0.05);
+  margin-bottom: 5px;
+}
+
+.navbar::before {
+  content: "";
+  position: absolute;
+  top: 13px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 4px;
+  background: hsla(0, 0%, 100%, 0.05);
+  border-radius: 5px;
+}
+
+.navbar-link {
+  color: var(--white);
+  font-size: var(--fs-4);
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.navbar-link:is(:hover, :focus) {
+  background: hsla(0, 0%, 100%, 0.1);
+}
+
+.navbar-actions {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navbar-btn {
+  color: var(--white);
+  font-size: 25px;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.navbar-btn:is(:hover, :focus),
+.navbar-actions .btn:is(:hover, :focus) {
+  background: hsla(0, 0%, 100%, 0.1);
+}
+
+/* Responsive...  */
+@media (min-width: 550px) {
+  .container {
+    max-width: 500px;
+    margin-inline: auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 680px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 980px;
+  }
+
+  .nav-toggle-btn {
+    display: none;
+  }
+
+  .navbar {
+    position: static;
+    visibility: visible;
+    box-shadow: none;
+    padding: 0;
+    background: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .navbar-list {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    border: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .navbar-link {
+    position: relative;
+  }
+
+  .navbar-link::after {
+    --scale: 0;
+
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) scale(var(--scale));
+    transform-origin: left;
+    width: calc(100% - 20px);
+    height: 2px;
+    background: var(--gradient);
+    transition: var(--transition);
+  }
+
+  .navbar-link:is(:hover, :focus) {
+    background: var(--gradient);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  .navbar-link:is(:hover, :focus)::after {
+    --scale: 1;
+  }
+
+  .navbar-actions {
+    gap: 10px;
+  }
+
+  .navbar-actions .btn {
+    background: var(--blue-ryb);
+    padding: 15px 25px;
+    transition: background var(--transition);
+  }
+
+  .navbar-actions .btn:is(:hover, :focus) {
+    background: hsl(221, 100%, 40%);
+  }
+
+  .navbar::before {
+    display: none;
+  }
+}

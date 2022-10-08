@@ -9,9 +9,26 @@ const overlay = document.querySelector(".overlay");
 
 const navElemArr = [navToggleBtn, overlay];
 
-navElemArr.forEach((element) => {
-  element.addEventListener("click", () => {
+for (let i = 0; i < navElemArr.length; i++) {
+  navElemArr[i].addEventListener("click", function () {
     elemToggleFunc(navbar);
     elemToggleFunc(overlay);
   });
+}
+
+// * header sticky
+const header = document.querySelector("#header");
+
+let lastScrollPosition = 0;
+
+window.addEventListener("scroll", function () {
+  let scrollPosition = window.pageYOffset;
+
+  if (scrollPosition > lastScrollPosition) {
+    header.classList.remove("active");
+  } else {
+    header.classList.add("active");
+  }
+
+  lastScrollPosition = scrollPosition <= 0 ? 0 : scrollPosition;
 });

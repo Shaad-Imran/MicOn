@@ -136,7 +136,7 @@ header {
   box-shadow: 0 1px 3px hsla(0, 0%, 0%, 0.5);
   background: var(--russian-violet);
   transition: var(--transition);
-  /* z-index: 4; */
+  z-index: 4;
 }
 
 header.active {
@@ -168,7 +168,7 @@ header .container {
   border-radius: 8px 8px 0 0;
   padding: 30px 10px 10px;
   box-shadow: 0 -1px 10px hsla(0, 0%, 0%, 0.5);
-  /* z-index: 2; */
+  z-index: 2;
   visibility: hidden;
   transition: 0.15s ease-in;
 }
@@ -226,6 +226,20 @@ header .container {
   background: hsla(0, 0%, 100%, 0.1);
 }
 
+.overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  transition: var(--transition);
+}
+
+.overlay.active {
+  pointer-events: all;
+  background: hsla(0, 0%, 0%, 0.7);
+}
+
+/* hero...  */
 .hero {
   padding: 140px 0 var(--section-padding);
 }

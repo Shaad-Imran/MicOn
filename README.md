@@ -1,8 +1,7 @@
 <div align="center">
   
   ![GitHub repo size](https://img.shields.io/github/repo-size/Shaad-Imran/Micro)
-  [![Twitter Follow](https://img.shields.io/twitter/follow/codewithsadee?style=social)](https://twitter.com/intent/follow?screen_name=WackyGhost)
-
+  
   <br />
 
   <h2 align="center">Micro - Podcast website</h2>

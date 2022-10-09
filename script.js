@@ -21,7 +21,7 @@ const header = document.querySelector("#header");
 
 let lastScrollPosition = 0;
 
-window.addEventListener("scroll", function () {
+window.addEventListener("scroll", () => {
   let scrollPosition = window.pageYOffset;
 
   if (scrollPosition > lastScrollPosition) {
@@ -31,4 +31,25 @@ window.addEventListener("scroll", function () {
   }
 
   lastScrollPosition = scrollPosition <= 0 ? 0 : scrollPosition;
+});
+
+// form validation
+const input = document.querySelector(".input-field");
+const submitBtn = document.querySelector(".submit-btn");
+
+input.addEventListener("input", () => {
+  if (input.checkValidity()) {
+    submitBtn.removeAttribute("disabled");
+  } else {
+    submitBtn.setAttribute("disabled", "");
+  }
+});
+
+// Go To Top
+const goTopBtn = document.querySelector(".go-top");
+
+window.addEventListener("scroll", () => {
+  window.scrollY >= 200
+    ? goTopBtn.classList.add("active")
+    : goTopBtn.classList.remove("active");
 });
